@@ -1,6 +1,6 @@
 # Telemetria NUCLEO – Sistema LoRa para NUCLEO-WL55JC1
 
-Sistema de telemetria baseado em comunicação LoRa para transmissão de dados, utilizando placas NUCLEO-WL55JC1 da STMicroelectronics. O código também é compatível com outras baseadas na mesma família de microcontroladores.
+Sistema de telemetria baseado em comunicação LoRa para transmissão de dados, utilizando placas NUCLEO-WL55JC1 da STMicroelectronics. O código é compatível com microcontroladores da família STM-WL, porém é possível que necessite de eventuais ajustes na pinagem e outros parâmetros a depender da versão.
 
 ---
 
