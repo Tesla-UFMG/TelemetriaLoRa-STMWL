@@ -66,7 +66,7 @@ extern "C" {
 #define LORA_SYNC_WORD 0xABDC                                 /* ID da rede */
 
 #define STD_BUFFER_SIZE 12
-
+#define PACKET_PASSWORD 0xDA7A // Senha de 16 bits
 #define SLEEP_TIME 20
 
 /* USER CODE END EM */
