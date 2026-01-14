@@ -215,7 +215,6 @@ Para cristal de 16 MHz:
 
 ## Autores
 
-- Lucas Oliveira Rodrigues
-- Equipe Fórmula Tesla UFMG
+- Lucas Oliveira Rodrigues / Equipe Fórmula Tesla UFMG
 
 Temporada 2025
