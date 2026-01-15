@@ -85,6 +85,7 @@ void Error_Handler(void);
 #define LORA_SYMBOL_TIMEOUT                         5         /* Symbols */
 #define LORA_SYNC_WORD 0xABDC                                 /* ID da rede */
 #define STD_BUFFER_SIZE 12
+#define PACKET_PASSWORD 0xDA7A
 
 #define TX_INTERVAL_MS 500
 
