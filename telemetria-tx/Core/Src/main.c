@@ -47,6 +47,7 @@
 #define MCP_READ 0x03
 #define MCP_READSTATUS 0xA0
 #define MCP_CANINTF 0x2C
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -315,11 +316,16 @@ int main(void)
 
       if (can_id > 0 && can_len > 0) {
 
-        lora_buff[0] = (uint8_t)(can_id & 0xFF);
-        lora_buff[1] = (uint8_t)((can_id >> 8) & 0xFF);
-        lora_buff[2] = (uint8_t)((can_id >> 16) & 0xFF);
-        lora_buff[3] = (uint8_t)((can_id >> 24) & 0xFF);
+        // Bytes 0-1: Senha (PACKET_PASSWORD)
+        lora_buff[0] = (uint8_t)(PACKET_PASSWORD & 0xFF);
+        lora_buff[1] = (uint8_t)((PACKET_PASSWORD >> 8) & 0xFF);
 
+        // Bytes 2-3: CAN ID (cast para uint16_t)
+        uint16_t can_id_16 = (uint16_t)can_id;
+        lora_buff[2] = (uint8_t)(can_id_16 & 0xFF);
+        lora_buff[3] = (uint8_t)((can_id_16 >> 8) & 0xFF);
+
+        // Bytes 4-11: Dados CAN (8 bytes)
         for (int i = 0; i < 8; i++) {
           if (i < can_len) {
             lora_buff[4 + i] = can_data[i];
@@ -337,8 +343,8 @@ int main(void)
         {
           BSP_LED_Off(LED_RED);
           BSP_LED_Toggle(LED_GREEN);
-          printf("\r\n\nTX #%lu - CAN ID: 0x%03lX (%lu)\n\r",
-                 tx_counter++, can_id, can_id, can_len);
+          printf("\r\n\nTX #%lu - CAN ID: %lu - PASS: 0x%X\n\r",
+                 tx_counter++, can_id, PACKET_PASSWORD);
           printf("Data: ");
           int n = sizeof(lora_buff)/sizeof(lora_buff[0]);
           for(int i = 0; i < n; i++){
